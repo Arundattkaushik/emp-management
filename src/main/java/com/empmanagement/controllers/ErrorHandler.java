@@ -12,4 +12,10 @@ public class ErrorHandler {
 	}
 	
 	
+	@ExceptionHandler ({NullPointerException.class, ArithmeticException.class})
+	public String nullError() {
+		return "redirect:/error-page";
+	}
+	
+	
 }

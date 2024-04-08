@@ -9,7 +9,7 @@ public class Utils {
 	private static SessionFactory factory = null;
 	private static Session session = null;
 	
-	public static SessionFactory getFactory() {
+	private static SessionFactory getFactory() {
 		if (factory==null) {
 			factory = new Configuration().configure("com/empmanagement/utilities/hibernate.cfg.xml").buildSessionFactory();
 		}

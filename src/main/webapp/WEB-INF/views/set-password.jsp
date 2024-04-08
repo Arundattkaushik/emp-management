@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@page import="com.empmanagement.services.Service"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,43 +17,32 @@
 			
 				<div class="card mt-5">
 					<div class="card-header text-center bg-primary">
-						<h3>Login</h3>
+						<h3>Update Password</h3>
 					</div>
 
 
 					<div class="card-body bg-dark text-white">
-
-
-
-						<form action="login", method="post">
-							<div class="form-group">
-								<label>Email address</label> 
-								<input type="text" class="form-control" placeholder="Enter email" name="email">
-							</div>
+					
+						<form action="update-password" method="post">
 
 							<div class="form-group">
 								<label>Password</label> 
 								<input type="password" class="form-control" placeholder="Password" name="password">
 							</div>
+							
+							<div class="form-group">
+								<label>Confirm Password</label> 
+								<input type="password" class="form-control" placeholder="Password" name="confirm_password">
+							</div>
 
 							<div class="text-center pt-4">
-								<button type="submit" class="btn btn-primary">Login</button>
+								<button type="submit" class="btn btn-primary">Update</button>
 							</div>
 						</form>
 
-
-						<div class="card-body text-center">
-							<a href="verify-email" class="card-link">Forgot Password</a> 
-							<a href="sign-up" class="card-link">Sign Up</a>
-						</div>
-
 					</div>
-
-
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 </body>

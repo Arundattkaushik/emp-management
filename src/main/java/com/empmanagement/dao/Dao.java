@@ -10,4 +10,7 @@ public interface Dao {
 	public Employee getEmployee(int id);
 	public List<Employee> getEmpList();
 	public Boolean deleteAnEmployee(Employee employee);
+	public Employee getEmpByEmailAndPassword(String email, String password);
+	public Boolean verifyEmail(String email);
+	public int updatePassword(String pass, String em);
 }

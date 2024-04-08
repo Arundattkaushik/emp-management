@@ -11,6 +11,7 @@ import com.empmanagement.utilities.Utils;
 public class DaoAdapter implements Dao {
 	int id;
 	Boolean isUpdated = false;
+	Boolean emailPersists = false;
 
 	@Override
 	public int create(Employee employee) {
@@ -55,6 +56,49 @@ public class DaoAdapter implements Dao {
 		Utils.getSession().getTransaction().commit();
 		isUpdated = true;
 		return isUpdated;
+	}
+
+	@Override
+	public Employee getEmpByEmailAndPassword(String email, String password) {
+		String q = "from Employee where email=:emp and password=:pass";
+		Query<Employee> query = Utils.getSession().createQuery(q);
+		query.setParameter("emp", email);
+		query.setParameter("pass", password);
+		Employee employee = query.getSingleResult();
+		return employee;
+	}
+
+	@Override
+	public Boolean verifyEmail(String email) {
+		String q = "from Employee where email=:email";
+		Query<Employee> query = Utils.getSession().createQuery(q);
+		query.setParameter("email", email);
+		Employee employee = query.getSingleResultOrNull();
+		
+		if (employee==null) {
+			emailPersists = false;
+		} 
+		else {
+			emailPersists = true;
+		}
+		return emailPersists;
+	}
+
+	@Override
+	public int updatePassword(String pass, String em) {
+		String q = "update Employee set password=:pass where email=:em";
+		Utils.getSession().getTransaction();
+		Utils.getSession().getTransaction().begin();
+		Query<Employee> query = Utils.getSession().createQuery(q);
+		query.setParameter("pass", pass);
+		query.setParameter("em", em);
+		
+//		System.out.println(query.getParameterValue("pass"));
+//		System.out.println(query.getParameterValue("em"));
+		
+		int i = query.executeUpdate();
+		Utils.getSession().getTransaction().commit();
+		return i;
 	}
 
 }

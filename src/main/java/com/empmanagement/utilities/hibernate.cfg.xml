@@ -12,8 +12,8 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">false</property>
-		<property name="format_sql">false</property>
+		<property name="format_sql">true</property>
 
-		<mapping class="com.todo.entities.TODO"/>
+		<mapping class="com.empmanagement.entities.Employee"/>
 	</session-factory>
 </hibernate-configuration>

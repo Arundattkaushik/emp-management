@@ -15,6 +15,7 @@ public class Service {
 	static int id;
 	static Boolean isDeleted = false;
 	static Boolean isUpdate = false;
+	static Boolean doPersists = false;
 
 	public static int saveEmployee(Employee employee) {
 		try {
@@ -48,5 +49,28 @@ public class Service {
 		dao.update(employee);
 		isUpdate = true;
 		return isUpdate;
+	}
+	
+	
+	public static Employee getEmpByEmailAndPassword(String email, String password) {
+		
+		Employee employee=null;
+		try {
+			employee = dao.getEmpByEmailAndPassword(email, password);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employee;
+		
+	}
+	
+	
+	public static Boolean verifyEmail(String email) {
+		return dao.verifyEmail(email);	
+	}
+	
+	public static int updatePassword(String password, String email) {
+		return dao.updatePassword(password, email);
 	}
 }
